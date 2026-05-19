@@ -1,41 +1,35 @@
 # Release Process
 
-Releases are handled automatically via GitHub Actions when a new GitHub Release is created.
+Releases are handled via two GitHub Actions workflows.
 
 ## Steps
 
-1. Merge all changes into `main` and confirm the build passes locally:
-   ```bash
-   npm ci && npm run build
-   ```
+1. Merge all changes into `main`. The [`build-release-branch.yml`](.github/workflows/build-release-branch.yml) workflow runs automatically and pushes compiled assets to the `release` branch.
 
-2. Update [CHANGELOG.md](CHANGELOG.md) with the new version entry.
+2. Update [CHANGELOG.md](CHANGELOG.md) with the new version entry and merge into `main`.
 
-3. On GitHub, go to **Releases → Draft a new release**.
+3. On GitHub, go to **Actions → Tag and Release → Run workflow**.
 
-4. Create a new tag following the `vX.Y.Z` format (e.g. `v1.1.0`).
+4. Enter the version (e.g. `v1.1.0`) and target branch (`release`), then click **Run workflow**.
 
-5. Add release notes and click **Publish release**.
-
-The [`release.yml`](.github/workflows/release.yml) workflow will then automatically:
+The [`tag-and-release.yml`](.github/workflows/tag-and-release.yml) workflow will then:
 - Replace the `__VERSION__` placeholder in `hm-split-background.php` with the tag version
-- Run `npm ci && npm run build` to compile JS assets
-- Commit the versioned plugin file and built assets back to the tag
-- Create a `.zip` archive (excluding `src/`, `node_modules/`, dev files)
-- Attach the `.zip` to the GitHub Release
+- Commit the versioned file to the `release` branch
+- Create and push the git tag pointing to the `release` branch
+- Create a GitHub Release
 
 ## Installing via Composer
 
-Point your project's `composer.json` at a specific tag:
+Because tags point to the `release` branch (which includes compiled assets), Composer works without any custom repository configuration once the package is on Packagist:
+
+```bash
+composer require humanmade/hm-split-background
+```
+
+Or pin to a specific version:
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/humanmade/hm-split-background"
-        }
-    ],
     "require": {
         "humanmade/hm-split-background": "^1.0.0"
     }
