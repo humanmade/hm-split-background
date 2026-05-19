@@ -1,6 +1,5 @@
 {
 	"name": "hm-split-background",
-	"version": "1.0.0",
 	"description": "Adds a hard-edge vertical split background to the core/group block",
 	"author": "Human Made",
 	"license": "GPL-2.0-or-later",
