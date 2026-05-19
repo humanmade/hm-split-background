@@ -12,6 +12,8 @@ Releases are handled via two GitHub Actions workflows.
 
 4. Enter the version (e.g. `v1.1.0`) and target branch (`release`), then click **Run workflow**.
 
+   ![](.github/docs/release-tagging-action.jpg)
+
 The [`tag-and-release.yml`](.github/workflows/tag-and-release.yml) workflow will then:
 - Replace the `__VERSION__` placeholder in `hm-split-background.php` with the tag version
 - Commit the versioned file to the `release` branch
