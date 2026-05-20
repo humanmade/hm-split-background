@@ -52,7 +52,7 @@ npm run release
 
 This checks out the `release` branch, hard-resets it to `main`, runs a production build, force-commits the compiled `build/` directory, and pushes. Composer installs point at the `release` branch so they always get compiled assets.
 
-## Requirements
+## Requirements:
 
 - WordPress 6.5+
 - PHP 8.0+
