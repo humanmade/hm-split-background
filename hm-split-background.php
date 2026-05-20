@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       HM Split Background
  * Description:       Adds a "Split Background" panel to the core/group block, enabling a hard-edge vertical gradient without manual CSS.
- * Version:           __VERSION__
+ * Version:           1.0.0
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            Human Made Limited
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const VERSION = '__VERSION__';
+const VERSION = '1.0.0';
 
 function bootstrap() : void {
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets' );
