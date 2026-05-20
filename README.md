@@ -1,5 +1,9 @@
 # HM Split Background
 
+
+https://github.com/user-attachments/assets/f4a40412-44a1-46f3-9072-0b92152a88d0
+
+
 Adds a **Split Background** panel to the `core/group` block in the WordPress block editor. It lets editors apply a hard-edge vertical gradient (two solid colours with a precise cutoff) without touching CSS or fighting the native gradient picker.
 
 The feature writes to the standard `style.color.gradient` attribute, so it's fully compatible with existing gradient tooling and produces no extra markup.
